@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using webProductos.Domain.Enums;
 
 namespace webProductos.Application.DTOs;
 
@@ -15,4 +16,6 @@ public class RegisterDto
     [Required]
     [Compare("Password")]
     public string ConfirmPassword { get; set; }
+    
+    public UserRole Role { get; set; }
 }

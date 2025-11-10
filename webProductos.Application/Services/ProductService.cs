@@ -77,7 +77,7 @@ public class ProductService : IProductService
         catch (Exception ex)
         {
             Console.WriteLine($"Error updating product with ID {id}");
-            return Result.Failure("An error occurred while updating the product.");
+            return Result.Failure("An error ocurred while updating the product.");
         }
     }
 

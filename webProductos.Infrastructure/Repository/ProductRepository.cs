@@ -20,27 +20,27 @@ public class ProductRepository : IProductRepository
     
     public async Task<List<Product>> GetAllAsync()
     {
-        return await _context.productos
+        return await _context.products
             .AsNoTracking()
             .ToListAsync();
     }
 
     public async Task<Product?> GetByIdAsync(int id)
     {
-        return await _context.productos
+        return await _context.products
             .AsTracking()
             .FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task DeleteAsync(Product product)
     {
-        _context.productos.Remove(product);
+        _context.products.Remove(product);
         await _context.SaveChangesAsync();
     }
 
     public async Task<Product> AddProductAsync(Product product)
     {
-        await _context.productos.AddAsync(product);
+        await _context.products.AddAsync(product);
         await _context.SaveChangesAsync();
         return product;
     }
@@ -57,11 +57,5 @@ public class ProductRepository : IProductRepository
             _logger.LogError(ex, "Error saving changes to database");
             throw;
         }
-    }
-
-    public async Task<bool> ExistsAsync(int id)
-    {
-        return await _context.productos
-            .AnyAsync(x => x.Id == id);
     }
 }
