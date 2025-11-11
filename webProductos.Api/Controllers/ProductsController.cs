@@ -26,7 +26,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [Authorize(Roles = "Client")]
+    [Authorize(Policy = "AdminOrClient")]
     public async Task<IActionResult> GetById(int id)
     {
         return  Ok(await _service.GetByIdAsync(id));

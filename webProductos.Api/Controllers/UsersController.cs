@@ -12,10 +12,12 @@ namespace webProductos.Api.Controllers;
 public class UsersController : ControllerBase
 {
     private readonly IUserService _service;
+    private readonly IAuthorizationService _auth;
 
-    public UsersController(IUserService service)
+    public UsersController(IUserService service, IAuthorizationService auth)
     {
         _service = service;
+        _auth = auth;
     }
 
     [HttpGet]
@@ -26,9 +28,18 @@ public class UsersController : ControllerBase
     }
     
     [HttpGet("{id}")]
-    [Authorize(Policy = "ResourceOwnerOrAdmin")]
     public async Task<IActionResult> GetById(int id)
     {
+        var existingUser = await _service.GetByIdAsync(id);
+        if (existingUser == null)
+            return NotFound();
+
+        var authorizationResult = await _auth.AuthorizeAsync(
+            User, existingUser.Id, "ResourceOwnerOrAdmin");
+
+        if (!authorizationResult.Succeeded)
+            return Forbid();
+        
         try
         {
             var user = await _service.GetByIdAsync(id);
@@ -41,9 +52,18 @@ public class UsersController : ControllerBase
     }
     
     [HttpPut("{id}")]
-    [Authorize(Policy = "ResourceOwnerOrAdmin")]
     public async Task<IActionResult> Update(int id, [FromBody] UserUpdateDto dto)
     {
+        var existingUser = await _service.GetByIdAsync(id);
+        if (existingUser == null)
+            return NotFound();
+
+        var authorizationResult = await _auth.AuthorizeAsync(
+            User, existingUser.Id, "ResourceOwnerOrAdmin");
+
+        if (!authorizationResult.Succeeded)
+            return Forbid();
+        
         var r = await _service.UpdateAsync(id, dto);
         if (r.Type == ResultType.NotFound) return NotFound();
         if (r.Type == ResultType.Conflict) return Conflict(r.Error);

@@ -24,10 +24,9 @@ public class ProductService : IProductService
         return response;
     }
 
-    public async Task<Product> GetByIdAsync(int id)
+    public async Task<Product?> GetByIdAsync(int id)
     {
         var product = await _repo.GetByIdAsync(id);
-
         return product;
     }
 

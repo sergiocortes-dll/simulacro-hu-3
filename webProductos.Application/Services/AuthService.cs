@@ -55,7 +55,7 @@ public class AuthService : IAuthService
         {
             Email = registerdto.Email,
             Password = hashedPassword,
-            Role = UserRole.Client
+            Role = registerdto.Role
         };
 
         var createdUser = await _userRepository.AddUserAsync(user);

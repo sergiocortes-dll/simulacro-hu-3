@@ -22,9 +22,10 @@ public class UserService : IUserService
         return await _repo.GetAllAsync();
     }
 
-    public async Task<User> GetByIdAsync(int id)
+    public async Task<User?> GetByIdAsync(int id)
     {
-        return await _repo.GetByIdAsync(id);
+        var user = await _repo.GetByIdAsync(id);
+        return user;
     }
 
     public async Task<bool> DeleteAsync(int id)

@@ -22,9 +22,11 @@ public class UserRepository : IUserRepository
         return await _context.users.ToListAsync();
     }
 
-    public async Task<User> GetByIdAsync(int id)
+    public async Task<User?> GetByIdAsync(int id)
     {
-        return await  _context.users.FirstOrDefaultAsync(x => x.Id == id);
+        return await _context.users
+            .AsTracking()
+            .FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task DeleteAsync(User user)

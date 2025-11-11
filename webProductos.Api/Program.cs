@@ -45,12 +45,12 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AdminOrClient", policy =>
         policy.RequireRole("Admin", "Client"));
     options.AddPolicy("ResourceOwnerOrAdmin", policy =>
-        policy.Requirements.Add(new ResourceOwnerRequirement()));
+        policy.Requirements.Add(new ResourceOwnerOrAdminRequirement()));
 });
 
 // Injection
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IAuthorizationHandler, ResourceOwnerAuthorizationHandler>();
+builder.Services.AddScoped<IAuthorizationHandler, ResourceOwnerOrAdminAuthorizationHandler>();
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
@@ -96,6 +96,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseHttpsRedirection();
 

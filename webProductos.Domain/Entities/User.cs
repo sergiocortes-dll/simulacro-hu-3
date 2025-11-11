@@ -23,4 +23,7 @@ public class User
         Email = email!;
         Password = password!;
     }
+
+    public bool IsAdmin() => Role == UserRole.Admin;
+    public bool IsOwner(int userId) => Id == userId;
 }
