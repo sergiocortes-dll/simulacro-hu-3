@@ -1,0 +1,440 @@
+{
+	"info": {
+		"_postman_id": "47544187-12ee7c8f-15a2-47ab-8cc5-564b0e129c67",
+		"name": "hu-3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Register",
+					"id": "47544187-6afc7c34-a8b1-4c87-8cda-5424dff559e5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@user.com\",\n    \"password\": \"123456\",\n    \"confirmPassword\": \"123456\",\n    \"role\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}auth/register",
+							"host": [
+								"{{url_base}}auth"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"id": "47544187-43838c73-1224-4f3a-b63d-a486aeef9a3b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@admin.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}auth/login",
+							"host": [
+								"{{url_base}}auth"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "47544187-bc043fa8-be23-4d98-8503-830a9088aec0"
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "All",
+					"id": "47544187-e6dac325-d808-4d68-a715-89308426e53d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}products",
+							"host": [
+								"{{url_base}}products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"id": "47544187-5089eb68-3397-445d-8dcc-2c038ecadb02",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Producto 2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}products",
+							"host": [
+								"{{url_base}}products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ById",
+					"id": "47544187-ba0cb392-955e-4b50-a024-d9d423e70501",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}products/1",
+							"host": [
+								"{{url_base}}products"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"id": "47544187-7b375ad4-351d-47b4-ab7d-54b9804b058b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test 1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}products/1",
+							"host": [
+								"{{url_base}}products"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"id": "47544187-611ad5fb-b9fc-4c7e-8905-ca581f30489a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}products/1",
+							"host": [
+								"{{url_base}}products"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "47544187-458120d1-06f0-4ca0-9078-4205e38eb478"
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "All",
+					"id": "47544187-5f6c438a-1059-4c03-97bb-143ef9230a7a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}users",
+							"host": [
+								"{{url_base}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ById",
+					"id": "47544187-e8d79d70-e90a-4744-8193-6d4e240369eb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}users/2",
+							"host": [
+								"{{url_base}}users"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"id": "47544187-c0fd6726-c0ed-40cd-80f3-95f89c47c058",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"$2a$11$/Y9uHsBHjxVajf7V/BfYkuf41bvC70s1qvz8E/lxxAidAKi3DPCw2\",\n    \"role\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}users/2",
+							"host": [
+								"{{url_base}}users"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"id": "47544187-fc33a0f9-929a-4ee1-b3d3-49073ddb4986",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}users/1",
+							"host": [
+								"{{url_base}}users"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "47544187-7ba24ddb-f342-4dbc-9082-f7d46f165bd4"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "71c11b22-b28d-4b6e-ac4d-e8cb8a40ab6d",
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "78aed6de-0daf-4ab7-a7a5-becf4b3a8685",
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url_base",
+			"value": ""
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
